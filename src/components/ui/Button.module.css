@@ -1,0 +1,127 @@
+/* ── Base Button ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── Solid (ink → rust) ── */
+.variantSolid {
+  background: var(--ink);
+  color: #fff;
+  padding: 15px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.variantSolid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.10) 50%,
+    transparent 80%
+  );
+  transition: left 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.variantSolid:hover::before {
+  left: 160%;
+}
+.variantSolid:hover {
+  background: var(--rust);
+}
+
+/* ── Outline ── */
+.variantOutline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 14px 30px;
+}
+.variantOutline:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* ── Rust/Gold accent ── */
+.variantGold {
+  background: var(--rust);
+  color: #fff;
+  padding: 15px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.variantGold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 80%
+  );
+  transition: left 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.variantGold:hover::before {
+  left: 160%;
+}
+.variantGold:hover {
+  background: var(--rust-hover);
+}
+
+/* ═══════════════════════════════
+   SHAPES — 3 distinct options
+═══════════════════════════════ */
+
+/* Sharp rectangle — architectural */
+.shapeAsymmetric {
+  border-radius: 0;
+}
+
+/* True pill — maximum roundness */
+.shapePill {
+  border-radius: 100px;
+}
+
+/* Angular cut corners — premium hexagonal feel */
+.shapeCut {
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+}
+
+/* ── Icon ── */
+.icon {
+  transition: transform 0.3s var(--ease);
+  flex-shrink: 0;
+}
+.btn:hover .icon {
+  transform: translateX(5px);
+}

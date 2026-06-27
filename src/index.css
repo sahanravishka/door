@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,700&family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Josefin+Sans:wght@100;200;300;400;600&display=swap');
+
+:root {
+  /* Warm Editorial Palette */
+  --bg:           #F0EBE1;
+  --bg-alt:       #E8E1D5;
+  --surface:      #FAFAF7;
+  --ink:          #0F0F0E;
+  --ink-mid:      #3A3632;
+  --ink-muted:    #7E776E;
+  --rust:         #B5461B;
+  --rust-hover:   #9A3A14;
+  --rust-tint:    #F5DDD5;
+  --sand:         #C9A96E;
+  --sand-tint:    #F7F0E3;
+  --border:       #D8D0C5;
+  --border-mid:   #B5AC9F;
+
+  /* Gold — luxury accent */
+  --gold:         #B8935A;
+  --gold-light:   #CFA876;
+  --gold-pale:    #F0E6D3;
+  --gold-dark:    #8C6D3F;
+
+  /* Elevation shadows */
+  --shadow-sm:    0 2px 12px rgba(15,15,14,0.06);
+  --shadow-md:    0 8px 32px rgba(15,15,14,0.10);
+  --shadow-lg:    0 24px 64px rgba(15,15,14,0.14);
+  --shadow-xl:    0 48px 120px rgba(15,15,14,0.18);
+
+  /* Hero-specific — completely different palette */
+  --hero-bg:      #C0B9B4;
+  --hero-ink:     #1A1715;
+  --door-1:       #2A2825;
+  --door-2:       #7B9084;
+  --door-3:       #C4918A;
+  --door-4:       #D8D0C4;
+  --door-5:       #546270;
+
+  /* Typography */
+  --font-display: 'Cormorant Garant', serif;
+  --font-sans:    'DM Sans', sans-serif;
+  --font-label:   'Josefin Sans', sans-serif;
+  --font-hero:    'Barlow Condensed', sans-serif;
+
+  /* Layout */
+  --nav-height:     116px;
+  --topbar-height:  36px;
+  --navrow-height:  80px;
+
+  /* Easing */
+  --ease:              cubic-bezier(0.16, 1, 0.3, 1);
+  --transition:        all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast:   all 0.2s ease;
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+@media (max-width: 1024px) { .container { padding: 0 40px; } }
+@media (max-width: 768px)  { .container { padding: 0 24px; } }
+
+/* Responsive nav-height tokens — all page hero top-padding uses these */
+@media (max-width: 768px) {
+  :root {
+    --navrow-height: 64px;
+    --nav-height: 100px; /* 36px topbar + 64px navrow */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --topbar-height: 0px;
+    --navrow-height: 60px;
+    --nav-height: 60px;
+  }
+}
+
+/* Animations */
+.fade-in-up {
+  animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.stagger-1 { animation-delay: 0.10s; }
+.stagger-2 { animation-delay: 0.22s; }
+.stagger-3 { animation-delay: 0.36s; }
+.stagger-4 { animation-delay: 0.52s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--rust); }

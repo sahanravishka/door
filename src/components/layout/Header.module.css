@@ -1,0 +1,403 @@
+/* ── Announcement bar ── */
+.topBar {
+  height: var(--topbar-height);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.topBarAccent {
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.topBarDot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── Header Shell ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  background: rgba(240, 235, 225, 0.90);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.headerScrolled {
+  border-bottom-color: var(--border);
+  background: rgba(240, 235, 225, 0.98);
+  box-shadow: 0 4px 40px rgba(15, 15, 14, 0.07);
+}
+
+/* ── Nav row ── */
+.nav {
+  height: var(--navrow-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoWordmark {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.logoSub {
+  font-family: var(--font-sans);
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  line-height: 1;
+}
+
+/* ── Nav links ── */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+  height: 100%;
+}
+
+.navItem {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-label);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  padding: 0 14px;
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.navLink:hover {
+  color: var(--ink);
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 18px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+
+.navLink {
+  position: relative;
+}
+
+.navItem:hover > .navLink::after {
+  transform: scaleX(1);
+}
+
+/* ── Dropdown — door window ── */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: var(--surface);
+
+  /* Door casing */
+  border: 1px solid var(--border-mid);
+  border-top: 2px solid var(--gold);
+
+  padding: 0;                /* panels handle their own padding */
+  display: flex;
+  gap: 0;
+  min-width: 380px;
+  box-shadow: 0 24px 80px rgba(15, 15, 14, 0.13);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s var(--ease), visibility 0.22s;
+  overflow: hidden;
+}
+
+/* Inner panel reveal — runs inside the door casing */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--border);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+/* Door knob — small gold circle at right edge */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--border-mid);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+}
+
+.navItem:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Each column = one door panel */
+.dropdownGroup {
+  flex: 1;
+  min-width: 140px;
+  padding: 24px 28px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Center stile — vertical divider between the two panels */
+.dropdownGroup + .dropdownGroup {
+  border-left: 1px solid var(--border);
+}
+
+.dropdownGroup h4 {
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdownItem {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  padding: 5px 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.dropdownItem:hover {
+  color: var(--rust);
+  transform: translateX(4px);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  background: transparent;
+}
+
+.iconBtn:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+/* ── Hamburger — hidden on desktop ── */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.hamburger:hover {
+  border-color: var(--rust);
+  color: var(--rust);
+}
+
+/* ── Mobile nav drawer ── */
+.mobileNav {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface);
+  z-index: 998;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid var(--border);
+}
+
+.mobileNavOpen {
+  transform: translateX(0);
+}
+
+.mobileSection {
+  border-bottom: 1px solid var(--border);
+}
+
+.mobileSectionToggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mobileSectionToggle:hover { color: var(--rust); }
+
+.mobileSectionToggle svg {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  color: var(--ink-muted);
+}
+
+.chevronOpen { transform: rotate(180deg) !important; }
+
+.mobileSectionLinks {
+  padding: 8px 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileSectionLabel {
+  font-family: var(--font-label);
+  font-size: 8.5px;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 12px 0 6px;
+  display: block;
+}
+
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink-muted);
+  padding: 4px 0;
+  display: block;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileLink:hover {
+  color: var(--rust);
+  transform: translateX(4px);
+}
+
+.mobileActions {
+  padding: 32px 24px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .links       { display: none; }
+  .desktopCta  { display: none; }
+  .hamburger   { display: flex; }
+  .mobileNav   { display: block; }
+  .iconBtn     { display: none; }
+  .nav         { gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .topBar      { display: none; }
+  .nav         { padding: 0 16px; }
+}
