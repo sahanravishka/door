@@ -32,7 +32,7 @@ const Footer = () => (
 
     {/* Newsletter strip */}
     <div className={styles.newsletter}>
-      <div className={`container ${styles.newsletterInner}`}>
+      <div className={`container ${styles.footerInner} ${styles.newsletterInner}`}>
         <div className={styles.newsletterText}>
           <h3>Stay in the Collection</h3>
           <p>New arrivals, exclusive finishes, and architectural inspiration — direct to your inbox.</p>
@@ -49,7 +49,7 @@ const Footer = () => (
       </div>
     </div>
 
-    <div className={`container ${styles.grid}`}>
+    <div className={`container ${styles.footerInner} ${styles.grid}`}>
 
       <div className={styles.brand}>
         <h2>Aura</h2>
@@ -93,7 +93,7 @@ const Footer = () => (
 
     </div>
 
-    <div className={`container ${styles.bottom}`}>
+    <div className={`container ${styles.footerInner} ${styles.bottom}`}>
       <p>&copy; {new Date().getFullYear()} Aura Millwork Inc. All rights reserved.</p>
       <div className={styles.bottomRight}>
         <div className={styles.social}>
