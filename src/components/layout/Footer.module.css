@@ -9,6 +9,13 @@
 .footerInner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 600px) {
+  .footerInner {
+    padding: 0 48px !important;
+  }
 }
 
 /* ── Newsletter strip ── */
@@ -236,7 +243,6 @@
   .newsletterInput { width: 220px; }
 }
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
   .newsletterForm { flex-direction: column; }
   .newsletterInput { width: 100%; border-right: none; border-bottom: 1px solid rgba(130, 140, 158, 0.3); }
   .newsletterBtn { width: 100%; }
