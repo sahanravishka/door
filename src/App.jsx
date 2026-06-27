@@ -4,11 +4,13 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import GenericPage from './pages/GenericPage';
+import ScrollToTop from './components/ScrollToTop';
 
 // We map out all required pages. Unimplemented custom pages will fall back to GenericPage.
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

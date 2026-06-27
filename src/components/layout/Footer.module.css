@@ -168,6 +168,13 @@
   gap: 20px;
 }
 
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
 .bottom p {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 10px;
@@ -228,4 +235,16 @@
   .newsletterForm { flex-direction: column; }
   .newsletterInput { width: 100%; border-right: none; border-bottom: 1px solid rgba(130, 140, 158, 0.3); }
   .newsletterBtn { width: 100%; }
+  
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .bottomRight {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+  }
 }

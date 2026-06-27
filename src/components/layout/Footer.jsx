@@ -95,15 +95,17 @@ const Footer = () => (
 
     <div className={`container ${styles.bottom}`}>
       <p>&copy; {new Date().getFullYear()} Aura Millwork Inc. All rights reserved.</p>
-      <div className={styles.social}>
-        <a href="#" aria-label="Instagram"><IconInstagram /></a>
-        <a href="#" aria-label="Facebook"><IconFacebook /></a>
-        <a href="#" aria-label="LinkedIn"><IconLinkedin /></a>
-        <a href="#" aria-label="X / Twitter"><IconX /></a>
-      </div>
-      <div className={styles.legal}>
-        <Link to="/privacy-policy">Privacy Policy</Link>
-        <Link to="/return-policy">Return Policy</Link>
+      <div className={styles.bottomRight}>
+        <div className={styles.social}>
+          <a href="#" aria-label="Instagram"><IconInstagram /></a>
+          <a href="#" aria-label="Facebook"><IconFacebook /></a>
+          <a href="#" aria-label="LinkedIn"><IconLinkedin /></a>
+          <a href="#" aria-label="X / Twitter"><IconX /></a>
+        </div>
+        <div className={styles.legal}>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/return-policy">Return Policy</Link>
+        </div>
       </div>
     </div>
   </footer>
