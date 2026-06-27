@@ -304,7 +304,7 @@
   top: var(--nav-height);
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100vh - var(--nav-height));
   background: var(--surface);
   z-index: 998;
   overflow-y: auto;
